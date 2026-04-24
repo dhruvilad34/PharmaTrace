@@ -2,15 +2,11 @@
 
 **Pharmaceutical Batch Record & Traceability Platform**
 
-A browser-based tool that simulates the core workflow of pharmaceutical Manufacturing Execution Systems (MES) — including electronic batch record design, traceability matrix generation, equipment state management, and AI-assisted GMP parameter generation.
-
----
+A browser-based tool that simulates the core workflow of pharmaceutical Manufacturing Execution Systems (MES) including electronic batch record design, traceability matrix generation, equipment state management, and AI-assisted GMP parameter generation.
 
 ## Overview
 
-PharmaTrace was built to demonstrate hands-on understanding of pharmaceutical manufacturing processes, GMP documentation standards, and MES architecture — specifically the workflows used in systems like Werum PAS-X. It mirrors real responsibilities in pharmaceutical process engineering and MES recipe design roles.
-
----
+PharmaTrace was built to demonstrate hands-on understanding of pharmaceutical manufacturing processes, GMP documentation standards, and MES architecture specifically the workflows used in systems like Werum PAS-X. It mirrors real responsibilities in pharmaceutical process engineering and MES recipe design roles.
 
 ## Features
 
@@ -43,8 +39,6 @@ PharmaTrace was built to demonstrate hands-on understanding of pharmaceutical ma
 - Exports Traceability Matrix as a separate JSON document
 - Includes product metadata, batch information, critical step flags, and double-check requirements
 
----
-
 ## Tech Stack
 
 | Layer | Technology |
@@ -54,8 +48,6 @@ PharmaTrace was built to demonstrate hands-on understanding of pharmaceutical ma
 | Styling | CSS custom properties, responsive grid layout, dark mode support |
 | Export | JSON (browser `navigator.clipboard`) |
 | Deployment | Single `.html` file — runs in any modern browser |
-
----
 
 ## Getting Started
 
@@ -75,17 +67,15 @@ npx serve .
 git init
 git add pharmatrace.html README.md
 git commit -m "Initial release"
-git remote add origin https://github.com/yourusername/pharmatrace.git
+git remote add origin https://github.com/dhruvilad34/pharmatrace.git
 git push -u origin main
 ```
 Then go to **Settings → Pages → Deploy from branch → main** in your GitHub repo.
 
 Your app will be live at:
 ```
-https://yourusername.github.io/pharmatrace/pharmatrace.html
+https://dhruvilad34.github.io/pharmatrace/pharmatrace.html
 ```
-
----
 
 ## Project Structure
 
@@ -110,8 +100,6 @@ This project demonstrates practical knowledge of:
 | Data Standards | Structured JSON export compatible with Werum PAS-X data models |
 | Quality Systems | IPC (In-Process Control), double-check requirements, CoA verification |
 
----
-
 ## Sample Workflow
 
 1. Open `pharmatrace.html` in your browser
@@ -122,8 +110,6 @@ This project demonstrates practical knowledge of:
 6. Switch to **Equipment States** to review state diagrams for your equipment
 7. Use the **AI Parameter Assistant** (right panel) to generate parameters from a text description
 8. Click **Export MBR JSON** to download the structured batch record
-
----
 
 ## Example Output (JSON Snippet)
 
@@ -157,12 +143,6 @@ This project demonstrates practical knowledge of:
   ]
 }
 ```
-
----
-
-## Author
-
-Built as a portfolio project demonstrating applied computing skills in pharmaceutical manufacturing systems, GMP documentation, and MES workflow design.
 
 ---
 
