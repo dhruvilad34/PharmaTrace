@@ -1,151 +1,91 @@
-# TraceKit
+TraceKit
+A structured workflow record and traceability platform
+A browser-based tool for designing multi-step process workflows, tracking parameters at each stage, generating traceability matrices, and managing equipment or resource state transitions — all exportable as structured JSON.
 
-**Pharmaceutical Batch Record & Traceability Platform**
+Overview
+TraceKit was built to demonstrate applied computing skills in workflow design, structured data management, process documentation, and AI-assisted parameter generation. It provides a visual interface for building step-by-step process records with configurable parameters, automated cross-referencing, and state machine visualisation.
 
-A browser-based tool that simulates the core workflow of pharmaceutical Manufacturing Execution Systems (MES) including electronic batch record design, traceability matrix generation, equipment state management, and AI-assisted GMP parameter generation.
+Features
+Workflow Builder
 
-## Overview
+Visual process palette with 12 configurable operation types
+Step-specific parameter fields tailored to each operation
+Reorderable steps with free-text notes and remarks
+Process flow visualisation with step connectors
 
-TraceKit was built to demonstrate hands-on understanding of pharmaceutical manufacturing processes, GMP documentation standards, and MES architecture specifically the workflows used in systems like Werum PAS-X. It mirrors real responsibilities in pharmaceutical process engineering and MES recipe design roles.
+Traceability Matrix
 
-## Features
+Auto-generated matrix mapping workflow steps to source document references
+Status tracking per step — verified, pending, requires review
+Exportable as structured JSON
 
-### Recipe Builder
-- Drag-and-drop style operation palette with 12 pharmaceutical unit operations (Dispense, Mix/Blend, Granulate, Dry, Mill, Lubricate, Compress, Coat, IPC Inspect, Pack/Label, Hold/Wait, Sample/QC)
-- GMP-relevant parameter fields specific to each operation type (e.g. impeller speed, LOD target, tablet hardness, inlet temperature)
-- Step reordering (move up / move down)
-- Free-text GMP remarks and operator instruction fields
-- Visual process flow with step connectors
+Resource State Diagrams
 
-### Traceability Matrix
-- Auto-generated traceability matrix mapping electronic MBR steps to Paper Master Formula reference sections (`MF-§001`, `MF-§002`, …)
-- Status tracking: `verified`, `requires review`, `pending`
-- Highlights critical steps requiring double-person verification
-- Exportable as structured JSON
+Auto-generated state transition diagrams based on active workflow steps
+Models valid state flows per resource type (e.g. Idle → Setup → Running → Complete → Clean)
+Reflects real-world state machine design patterns
 
-### Equipment State Diagrams (ESP)
-- Auto-generated equipment state diagrams based on operations in the active recipe
-- State transition flows per equipment type (e.g. Idle → CIP → Ready → Running → Cleaning for granulators)
-- Reflects real pharmaceutical shop floor state machine design
+AI Parameter Assistant
 
-### AI Parameter Assistant
-- Powered by Claude (Anthropic API)
-- Describe a manufacturing step in plain language → receive GMP-compliant parameter suggestions
-- Automatically parses AI output and populates a new step card in the recipe
-- Supports any unit operation type
+Powered by Claude (Anthropic API)
+Describe a process step in plain language → receive structured parameter suggestions
+Parsed output populates a new step card automatically
 
-### JSON Export
-- Exports full Master Batch Record in structured JSON format compatible with Werum PAS-X data models
-- Exports Traceability Matrix as a separate JSON document
-- Includes product metadata, batch information, critical step flags, and double-check requirements
+JSON Export
 
-## Tech Stack
+Full workflow record exported as structured JSON
+Includes step metadata, parameter values, status flags, and verification requirements
+Compatible with downstream processing pipelines
 
-| Layer | Technology |
-|---|---|
-| Frontend | Vanilla HTML, CSS, JavaScript (no framework) |
-| AI Integration | Anthropic Claude API (`claude-sonnet-4-20250514`) |
-| Styling | CSS custom properties, responsive grid layout, dark mode support |
-| Export | JSON (browser `navigator.clipboard`) |
-| Deployment | Single `.html` file — runs in any modern browser |
 
-## Getting Started
+Tech Stack
+LayerTechnologyFrontendVanilla HTML, CSS, JavaScriptAI IntegrationAnthropic Claude APIStylingCSS custom properties, dark mode supportDeploymentSingle .html file — runs in any modern browser
 
-### Run locally
-No installation required. Simply open `pharmatrace.html` in any modern browser:
+Getting Started
+Run locally
+No installation required. Open tracekit.html in any modern browser:
+bash# Option 1: double-click the file in your file explorer
 
-```bash
-# Option 1: double-click the file in your file explorer
-
-# Option 2: serve locally (optional, for API calls)
+# Option 2: serve locally
 npx serve .
-# then open http://localhost:3000/pharmatrace.html
-```
-
-### Deploy to GitHub Pages
-```bash
-git init
-git add pharmatrace.html README.md
-git commit -m "Initial release"
-git remote add origin https://github.com/dhruvilad34/pharmatrace.git
+# open http://localhost:3000/tracekit.html
+Deploy to GitHub Pages
+bashgit init
+git add tracekit.html README.md
+git commit -m "Initial release: TraceKit v1.0"
+git remote add origin https://github.com/yourusername/tracekit.git
 git push -u origin main
-```
-Then go to **Settings → Pages → Deploy from branch → main** in your GitHub repo.
+Enable GitHub Pages in Settings → Pages → Deploy from branch → main.
+Live at:
+https://yourusername.github.io/tracekit/
 
-Your app will be live at:
-```
-https://dhruvilad34.github.io/PharmaTrace/
-```
+Project Structure
+tracekit/
+├── tracekit.html      # Complete single-file application
+└── README.md          # This file
 
-## Project Structure
+Core Concepts Demonstrated
+ConceptImplementationWorkflow designStep-based process builder with typed operationsTraceabilityAuto-generated matrix with source document mappingState machinesResource state transition diagramsAI integrationNatural language → structured parameter generationData exportStructured JSON with metadata and validation flagsDocumentationDouble-check flags, verification requirements, audit fields
 
-```
-pharmatrace/
-├── pharmatrace.html      # Complete single-file application
-└── README.md             # This file
-```
-
----
-
-## Pharmaceutical Domain Coverage
-
-This project demonstrates practical knowledge of:
-
-| Domain | Coverage |
-|---|---|
-| MES Architecture | Recipe design, master batch records, parameter value lists |
-| GMP Documentation | Electronic batch records, traceability matrices, change control |
-| Process Control | Equipment state diagrams, critical process parameters |
-| Unit Operations | Wet granulation, fluid bed drying, tablet compression, film coating |
-| Data Standards | Structured JSON export compatible with Werum PAS-X data models |
-| Quality Systems | IPC (In-Process Control), double-check requirements, CoA verification |
-
-## Sample Workflow
-
-1. Open `pharmatrace.html` in your browser
-2. Enter a Master Batch Record title (e.g. `Metformin HCl 500mg Tablets – MBR-2024-001`)
-3. Click operations in the left sidebar to build your recipe step by step
-4. Fill in GMP parameters for each step (equipment, speeds, temperatures, targets)
-5. Switch to the **Traceability** tab to see the auto-generated matrix
-6. Switch to **Equipment States** to review state diagrams for your equipment
-7. Use the **AI Parameter Assistant** (right panel) to generate parameters from a text description
-8. Click **Export MBR JSON** to download the structured batch record
-
-## Example Output (JSON Snippet)
-
-```json
-{
-  "document_type": "Master Batch Record",
-  "system": "PharmaTrace v1.0",
-  "mbr_title": "Metformin HCl 500mg Tablets – MBR-2024-001",
-  "mbr_version": "1.0",
+Sample JSON Output
+json{
+  "document_type": "Workflow Record",
+  "title": "Process Batch 2024-001",
+  "version": "1.0",
   "status": "draft",
-  "product": {
-    "name": "Metformin HCl",
-    "strength": "500mg",
-    "dosage_form": "Film-coated tablet"
-  },
   "steps": [
-    {
+{
       "step_number": 1,
       "step_id": "STEP-001",
       "operation_type": "Dispense",
-      "description": "Dispense Metformin HCl API",
+      "description": "Initial material intake",
       "parameters": {
-        "mat_id": "MET-001 / SAP-88210",
-        "qty": "55.0",
-        "tol": "± 2.0",
-        "equip": "Dispensing Booth A"
+        "quantity": "55.0 kg",
+        "tolerance": "± 2.0%",
+        "equipment": "Station A"
       },
       "critical_step": true,
       "requires_double_check": true
     }
   ]
 }
-```
-
----
-
-## License
-
-MIT License — free to use, modify, and distribute.
