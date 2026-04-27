@@ -2,7 +2,7 @@
 
 > A structured workflow record, traceability, and state management platform.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-blue)](https://dhruvilad34.github.io/tracekit/)
+[![Live Demo](https://dhruvilad34.github.io/TraceKit/)](https://dhruvilad34.github.io/TraceKit/)
 
 ---
 
